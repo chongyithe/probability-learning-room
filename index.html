@@ -132,7 +132,16 @@ body.fx-on .nav-item.active{background:transparent;color:var(--ink);box-shadow:n
 
 <style id="demo-upgrade">.demo-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0}.demo-tabs button{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:99px;padding:6px 12px;font:inherit;font-size:11px;font-weight:800;cursor:pointer}.demo-tabs button:hover{border-color:var(--green)}.demo-tabs button.on{background:var(--green);border-color:var(--green);color:#fff}.demo-tabs+.demo-stage{margin-top:8px}
 </style>
-</head>
+<style>
+html.theme-switching,html.theme-switching body,html.theme-switching body *,html.theme-switching body *::before,html.theme-switching body *::after{transition-property:background,color,border-color,box-shadow,fill,stroke,outline-color;transition-duration:480ms;transition-timing-function:cubic-bezier(.22,.61,.36,1)}
+#themeToggle .theme-icon{display:inline-block;margin-right:5px;transform-origin:50% 55%;will-change:transform,opacity}
+#themeToggle .theme-label{display:inline-block;vertical-align:middle}
+html.theme-switching #themeToggle .theme-icon{animation:themeIconSpin .52s cubic-bezier(.2,.75,.25,1) both}
+html.theme-switching #themeToggle .theme-label{animation:themeLabelReveal .34s ease both}
+@keyframes themeIconSpin{0%{transform:rotate(-120deg) scale(.58);opacity:.2}68%{transform:rotate(18deg) scale(1.1);opacity:1}100%{transform:rotate(0) scale(1);opacity:1}}
+@keyframes themeLabelReveal{0%{transform:translateY(3px);opacity:.35}100%{transform:translateY(0);opacity:1}}
+@media(prefers-reduced-motion:reduce){html.theme-switching,html.theme-switching body,html.theme-switching body *,html.theme-switching body *::before,html.theme-switching body *::after{transition-duration:.01ms!important}html.theme-switching #themeToggle .theme-icon,html.theme-switching #themeToggle .theme-label{animation-duration:.01ms!important}}
+</style></head>
 <body>
 <div class="app">
   <aside>
@@ -143,7 +152,7 @@ body.fx-on .nav-item.active{background:transparent;color:var(--ink);box-shadow:n
     <div class="mobile-course-select"><select id="mobileNav" aria-label="跳转到课本小节"></select></div>
   </aside>
   <main>
-    <div class="topline"><div class="eyebrow" id="breadcrumb">概率 · 从具体结果到概率模型</div><div class="top-actions"><button class="quiet-btn" id="themeToggle" type="button" aria-pressed="false">🌙 深色模式</button><button class="quiet-btn" id="resetProgress" type="button">清空本机进度</button></div></div>
+    <div class="topline"><div class="eyebrow" id="breadcrumb">概率 · 从具体结果到概率模型</div><div class="top-actions"><button class="quiet-btn" id="themeToggle" type="button" aria-pressed="false"><span class="theme-icon" id="themeIcon" aria-hidden="true">🌙</span><span class="theme-label" id="themeLabel">深色模式</span></button><button class="quiet-btn" id="resetProgress" type="button">清空本机进度</button></div></div>
     <section class="welcome"><div><div class="mini-kicker">从课本第 210 页开始</div><h1>想，全是问题；<br>做，才有答案。</h1><p>按课本节奏拆成 21 个小节关卡，再用整章总复习收尾。先学概念、看例题逐步推导，再依次完成随堂练习、习题和总复习难题。所有题目按教材题型改编，每题都附提示与完整解法。</p><div class="welcome-signoff">一起加油！<span>——义和</span></div></div><div class="hero-progress"><strong id="heroCount">0 / 22</strong><span>小关卡完成</span></div></section>
     <div class="lesson-heading"><div><div class="eyebrow" id="lessonCode">26.1a</div><h2 id="lessonTitle"></h2><p id="lessonPages"></p></div><span class="level-badge" id="lessonState">未完成</span></div>
     <section class="lesson-intro">
@@ -674,9 +683,9 @@ document.getElementById('nextQuestion').addEventListener('click',function(){var 
 function loadLesson(index){lessonIndex=Math.max(0,Math.min(lessons.length-1,index));stageIndex=0;questionIndex=0;renderLesson();window.scrollTo({top:0,behavior:'smooth'});}
 document.getElementById('prevLevel').addEventListener('click',function(){loadLesson(lessonIndex-1);});document.getElementById('nextLevel').addEventListener('click',function(){loadLesson(lessonIndex+1);});
 document.getElementById('replayDemo').addEventListener('click',function(){renderDemo(currentLesson());});
-var themeToggle=document.getElementById('themeToggle');
-function syncThemeButton(){var dark=document.documentElement.dataset.theme==='dark';themeToggle.textContent=dark?'☀️ 浅色模式':'🌙 深色模式';themeToggle.setAttribute('aria-pressed',String(dark));themeToggle.setAttribute('aria-label',dark?'切换到浅色模式':'切换到深色模式');}
-themeToggle.addEventListener('click',function(){var dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';try{localStorage.setItem('probabilityTheme',dark?'dark':'light');}catch(e){}syncThemeButton();});
+var themeToggle=document.getElementById('themeToggle'),themeIcon=document.getElementById('themeIcon'),themeLabel=document.getElementById('themeLabel'),themeAnimationTimer;
+function syncThemeButton(){var dark=document.documentElement.dataset.theme==='dark';themeIcon.textContent=dark?'☀️':'🌙';themeLabel.textContent=dark?'浅色模式':'深色模式';themeToggle.setAttribute('aria-pressed',String(dark));themeToggle.setAttribute('aria-label',dark?'切换到浅色模式':'切换到深色模式');}
+themeToggle.addEventListener('click',function(){var root=document.documentElement,dark=root.dataset.theme!=='dark';window.clearTimeout(themeAnimationTimer);root.classList.remove('theme-switching');void root.offsetWidth;root.classList.add('theme-switching');root.dataset.theme=dark?'dark':'light';try{localStorage.setItem('probabilityTheme',dark?'dark':'light');}catch(e){}syncThemeButton();themeAnimationTimer=window.setTimeout(function(){root.classList.remove('theme-switching');},540);});
 syncThemeButton();
 
 document.getElementById('resetProgress').addEventListener('click',function(){if(!window.confirm('要清空这台设备上保存的课程进度吗？'))return;done={};solved={};multiAnswerDrafts={};multiAnswerCorrect={};multiAnswerIncorrect={};saveState();try{localStorage.removeItem('probabilityLessonOneDone');}catch(e){}renderLesson();toast('本机进度已清空。');});
