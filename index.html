@@ -250,7 +250,7 @@ var bookPractice={
   BQ('某工厂售出 18,000 罐上述咖啡，求容量超过 260 ml 的咖啡罐预计有多少罐。','38','先求单罐超过 260 ml 的概率，再乘总罐数。','z=(260−244.5)/5.4≈2.87。标准正态表给 P(Z>2.87)≈0.0021。\n预计罐数=18000×0.0021=37.8，约 38 罐。','课本原题｜习题 26.7 第1(c)题｜p.268')]},
  '26.7b':{exercise:[
   BQ('标准正态变量 Z 满足 P(a<Z<1.1)=0.6，求 a。','-0.63','先从 Φ(1.1) 中减去区间面积 0.6，得到 Φ(a)。','标准正态表给 Φ(1.1)=0.8643。\n因此 Φ(a)=0.8643−0.6=0.2643。查表得 a≈−0.63，因为 Φ(−0.63)=0.2643。','课本原题｜随堂练习 26.7b(c)｜p.263'),
-  BQ('标准正态变量 Z 满足 P(|Z|<a)=0.61，求正数 a。','0.86','中央面积是 0.61，所以每侧尾面积为 (1−0.61)/2。','由对称性，每侧尾面积为 (1−0.61)/2=0.195。\n所以 Φ(a)=1−0.195=0.805。查表得 a≈0.86（Φ(0.86)=0.8051）。','课本原题｜随堂练习 26.7b(f)｜p.263'),
+  BQ('标准正态变量 Z 满足 P(|Z|<a)=0.61，求正数 a。','0.86','中央面积是 0.61，所以每侧尾面积为 (1−0.61)/2。','由对称性，每侧尾面积为 (1−0.61)/2=0.195。\n所以 Φ(a)=1−0.195=0.805。查表得 a≈0.86（Φ(0.86)=0.8051）。','课本原题｜随堂练习 26.7b(f)｜p.263')],review:[
   BQ('标准正态变量 Z 满足 P(|Z|>a)=0.0628，求正数 a。','1.86','两侧对称尾面积相等，先把总尾面积平均分成两份。','每侧尾面积为 0.0628/2=0.0314。查表得 P(Z>a)=0.0314 对应 a≈1.86。','课本原题｜随堂练习 26.7b(e)｜p.263')]},
  '26.7c':{exercise:[
   BQ('某次考试成绩 X~N(189,53²)，共有 2,256 名考生。估计成绩低于 160 分的人数。','657','先算 z，再按标准正态表求比例，最后乘考生总数。','z=(160−189)/53≈−0.55。查表 P(Z<−0.55)≈0.2912。\n人数约为 2256×0.2912≈657 人。','课本原题｜习题 26.7 第5(a)题｜p.268'),
@@ -314,6 +314,8 @@ var coreFormulas={
   '26.5d':{label:'方差与标准差',expression:'<span class="formula-break">σ<sup>2</sup>=∑<sub>i</sub>(x<sub>i</sub>−μ)<sup>2</sup>p<sub>i</sub></span><span class="formula-break">σ=√Var(X)</span>',note:'方差衡量偏离均值的平方平均；标准差是方差的平方根。'},
   '26.6a':{label:'二项分布概率公式',expression:'P(X=r)=C(n,r)p<sup>r</sup>(1−p)<sup>n−r</sup>',note:'X∼Bin(n,p)：固定做 n 次独立试验，每次成功概率为 p。'},
   '26.6b':{label:'二项分布的均值与标准差',expression:'μ=np　　σ=√(npq)　　q=1−p',note:'先确认 n、成功概率 p 和失败概率 q，再代入公式。'},
+  '26.7a':{label:'已知 z 值，求曲线面积',expression:'P(Z<−z)=P(Z>z)　　P(Z<z)=1−P(Z>z)',note:'给定 z 后先标阴影；左尾可用对称性转换，另一侧面积用 1 补。'},
+  '26.7b':{label:'已知概率，反查 z 值',expression:'P(Z≤z)=p　⇔　z=Φ<sup>−1</sup>(p)',note:'先将题目面积转成左侧累计概率 p，再查标准正态表反推出分位点 z。'},
   '26.7c':{label:'标准化公式',expression:'z=<span class="formula-frac"><span>x−μ</span><span>σ</span></span>',note:'把原始数值 x 转成距均值多少个标准差，再查标准正态分布表。'},
   '26.7d':{label:'由 z 值反求原始边界',expression:'x=μ+zσ',note:'先由目标概率查出 z，再代回均值 μ 和标准差 σ 求 x。'}
 };
@@ -475,7 +477,7 @@ function updateProgress(){
   document.getElementById('overallBar').style.width=(count/lessons.length*100)+'%';
   document.getElementById('heroCount').textContent=count+' / '+lessons.length;
   document.querySelectorAll('.nav-item').forEach(function(btn){var l=lessons[Number(btn.dataset.index)];btn.classList.toggle('active',Number(btn.dataset.index)===lessonIndex);btn.querySelector('.nav-check').textContent=done[l.code]?'✓':'·';});
-}function renderStageTabs(){var tabs=document.getElementById('stageTabs');tabs.innerHTML='';currentLesson().stages.forEach(function(stage,index){var btn=document.createElement('button');btn.type='button';btn.className='stage-tab'+(index===stageIndex?' active':'');btn.setAttribute('role','tab');var num=stage.questions.filter(function(q,i){return solved[storageKey(currentLesson(),stage,i)];}).length;btn.innerHTML=stage.name+' <span class="stage-count">'+num+'/'+stage.questions.length+'</span>';btn.addEventListener('click',function(){stageIndex=index;questionIndex=0;renderLesson();});tabs.appendChild(btn);});}
+}function renderStageTabs(){var tabs=document.getElementById('stageTabs');tabs.innerHTML='';currentLesson().stages.forEach(function(stage,index){var btn=document.createElement('button');btn.type='button';btn.className='stage-tab'+(index===stageIndex?' active':'');btn.setAttribute('role','tab');var num=stage.questions.filter(function(q,i){return solved[storageKey(currentLesson(),stage,i)];}).length;btn.innerHTML=stage.name+' <span class="stage-count">'+num+'/'+stage.questions.length+'</span>';btn.addEventListener('click',function(){stageIndex=index;questionIndex=0;renderStageTabs();renderQuestion();});tabs.appendChild(btn);});}
 function renderLesson(){
   var item=currentLesson(),guide=beginnerLessons[item.code]||beginnerLessons['总复习'];
   document.getElementById('lessonCode').textContent=item.code;
@@ -495,7 +497,6 @@ function renderLesson(){
   var stepsList=document.getElementById('exampleSteps');stepsList.innerHTML='';
   guide.steps.forEach(function(step){var li=document.createElement('li');var body=document.createElement('div');body.className='step-body';var title=document.createElement('strong');title.textContent=step[0];var detail=document.createElement('span');detail.textContent=step[1];body.appendChild(title);body.appendChild(detail);li.appendChild(body);stepsList.appendChild(li);});
   document.getElementById('exampleTakeaway').innerHTML='<strong>这道例题要带走：</strong>'+guide.takeaway;
-  renderDemo(item);
   var formal=formalAnswers[item.code]||formalAnswers['总复习'];
   var given=document.getElementById('formalGiven');given.innerHTML='<strong>例题条件：</strong>';var givenText=document.createElement('span');givenText.textContent=formal.given;given.appendChild(givenText);
   var formalList=document.getElementById('formalSteps');formalList.innerHTML='';formal.steps.forEach(function(text){var li=document.createElement('li');li.textContent=text;formalList.appendChild(li);});
@@ -504,6 +505,7 @@ function renderLesson(){
   document.getElementById('breadcrumb').textContent='第 26 章 · '+item.code+' · '+item.title;
   document.getElementById('mobileNav').value=lessonIndex;
   renderStageTabs();renderQuestion();updateProgress();
+  try{renderDemo(item);}catch(error){var demoStage=document.getElementById('demoStage');demoStage.classList.remove('interactive-stage','guided-stage','union-stage');document.getElementById('demoTitle').textContent='图解加载提示';document.getElementById('demoSubtitle').textContent=item.title+'的互动图解暂时无法显示。';document.getElementById('demoCaption').textContent='课程讲解和练习仍可正常使用。';demoStage.innerHTML='<div class="guide-note"><strong>图解暂时无法加载</strong><span>可以继续学习本节内容并完成练习。</span></div>';}
 }function renderQuestion(){var item=currentLesson(),stage=item.stages[stageIndex];if(questionIndex>=stage.questions.length)questionIndex=stage.questions.length-1;var question=stage.questions[questionIndex],key=storageKey(item,stage,questionIndex),already=!!solved[key];document.getElementById('difficultyBadge').textContent=stage.difficulty;document.getElementById('difficultyBadge').className='difficulty '+(stageIndex===0?'d1':stageIndex===1?'d2':'d3');document.getElementById('questionSource').textContent=question.source||stage.name+' · '+item.code;document.getElementById('questionNum').textContent='第 '+(questionIndex+1)+' / '+stage.questions.length+' 题';document.getElementById('questionText').textContent=question.text;document.getElementById('answerInput').value='';document.getElementById('answerInput').placeholder=question.multiAnswer?'按顺序输入答案，用逗号分隔':'输入数值、分数或关键词';document.getElementById('feedback').className='feedback'+(already?' good':'');document.getElementById('feedback').textContent=already?'本题已答对。可以查看解法，或继续下一题。':'';document.getElementById('hintLine').hidden=true;document.getElementById('hintLine').textContent='提示：'+question.hint;document.getElementById('solutionBox').className='solution-box'+(already?' show':'');setSolution(document.getElementById('solutionBox'),question.solution);var completed=stage.questions.filter(function(q,i){return solved[storageKey(item,stage,i)];}).length;document.getElementById('stageProgress').textContent='本档 '+completed+' / '+stage.questions.length+' 答对';document.getElementById('nextQuestion').textContent=questionIndex<stage.questions.length-1?'下一题 →':stageIndex<2?'进入'+item.stages[stageIndex+1].name+' →':done[item.code]?'本关已通关 ✓':'完成本关检查 →';}
 function parseNumber(text){var t=String(text).trim().replace(/,/g,'').replace(/％/g,'%');if(t.endsWith('%')){var p=Number(t.slice(0,-1));return Number.isFinite(p)?p/100:null;}var f=t.match(/^(-?\d+(?:\.\d+)?)\s*\/\s*(-?\d+(?:\.\d+)?)$/);if(f){var d=Number(f[2]);return d===0?null:Number(f[1])/d;}if(t==='')return null;var n=Number(t);return Number.isFinite(n)?n:null;}
 function scalarAnswerMatches(left,right){if(left===right)return true;var n1=parseNumber(left),n2=parseNumber(right);return n1!==null&&n2!==null&&Math.abs(n1-n2)<=Math.max(.000001,Math.abs(n2)*.002);}
