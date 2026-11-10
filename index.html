@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4f1e8">
-  <title>概率实验室 · 完整课程</title>
+  <title>概率实验室 · 第 26 章</title>
+<meta name="description" content="按课本顺序学概率：例题图解、互动实验、分层练习与错题复习。">
   <style>
     :root{--paper:#f4f1e8;--ink:#18332f;--muted:#6c7e75;--line:#d9ded2;--green:#1d6654;--green-soft:#dcece1;--orange:#ec8b53;--orange-soft:#fbe7d7;--yellow:#f1c84e;--white:#fffdf7;--blue:#a7c9dc;--shadow:0 12px 36px rgba(24,51,47,.08)}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Aptos","Microsoft YaHei UI","Noto Sans SC",sans-serif}button,input{font:inherit}button{color:inherit}.app{max-width:1500px;margin:auto;min-height:100vh;display:grid;grid-template-columns:280px minmax(0,1fr)}
@@ -141,34 +142,209 @@ html.theme-switching #themeToggle .theme-label{animation:themeLabelReveal .34s e
 @keyframes themeIconSpin{0%{transform:rotate(-120deg) scale(.58);opacity:.2}68%{transform:rotate(18deg) scale(1.1);opacity:1}100%{transform:rotate(0) scale(1);opacity:1}}
 @keyframes themeLabelReveal{0%{transform:translateY(3px);opacity:.35}100%{transform:translateY(0);opacity:1}}
 @media(prefers-reduced-motion:reduce){html.theme-switching,html.theme-switching body,html.theme-switching body *,html.theme-switching body *::before,html.theme-switching body *::after{transition-duration:.01ms!important}html.theme-switching #themeToggle .theme-icon,html.theme-switching #themeToggle .theme-label{animation-duration:.01ms!important}}
-</style></head>
+</style><style id="study-studio-css">
+:root{--paper:#f1f5f2;--white:#fff;--ink:#152c28;--muted:#4c625a;--line:#d6e2da;--green:#14634e;--green-soft:#e3f2e9;--studio-rail:#f8fbf9;--studio-tint:#edf5ef;--studio-accent:#196750;--studio-strong:#124b3c;--studio-card:#fff;--shadow:0 4px 20px #173f2e0b}
+html[data-theme="dark"]{--paper:#121a18;--white:#1c2823;--ink:#e9f2ec;--muted:#afc1b5;--line:#36483e;--studio-rail:#171f1b;--studio-tint:#26362e;--studio-accent:#9adbb9;--studio-strong:#bcf1d6;--studio-card:#202d26;--shadow:0 6px 20px #0002}
+body{font-family:"Microsoft YaHei UI","PingFang SC","Noto Sans SC",system-ui,sans-serif}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--studio-accent);outline-offset:3px}
+button:disabled{cursor:default;opacity:.45}
+.skip-content{position:fixed;left:12px;top:12px;z-index:100;padding:10px 14px;background:var(--white);color:var(--ink);transform:translateY(-150%)}
+.skip-content:focus{transform:none}
+.app{max-width:1600px;grid-template-columns:248px minmax(0,1fr)}
+.app>aside,html[data-theme="dark"] .app>aside{background:var(--studio-rail);padding:26px 14px 24px 17px;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.brand{font-size:19px;letter-spacing:-.04em;margin-bottom:20px}
+.brand-mark{width:38px;height:38px;background:#145d4a;border-radius:11px;transform:none}
+.brand small{font-size:10px;letter-spacing:.04em}
+.book-link{padding:11px 12px;font-size:12px}
+.nav-group h2{color:var(--muted);font-size:11px}
+.nav-item{padding:10px 8px;grid-template-columns:40px minmax(0,1fr) 14px;min-height:40px}
+.nav-title{font-size:12px}
+.nav-item.active,html[data-theme="dark"] .nav-item.active{background:var(--green-soft);color:var(--studio-strong)}
+.nav-item.active .nav-check{color:var(--studio-accent)}
+main{width:100%;max-width:1200px;margin:0 auto;padding:18px clamp(20px,3.4vw,48px) 52px}
+.topline{min-height:44px;gap:10px;margin-bottom:16px}
+.topline .eyebrow{color:var(--muted);font-size:11px;letter-spacing:.025em}
+.top-actions{gap:7px}
+.top-actions button,.study-dialog .quiet-btn{min-height:37px;font-size:12px;white-space:nowrap}
+#resetProgress{margin:12px 4px 0;display:block;color:var(--muted);min-height:36px}
+.mobile-pdf{display:none}
+.welcome{isolation:isolate;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);padding:clamp(23px,4vw,45px);gap:10px;margin:0;border-radius:24px;background:linear-gradient(128deg,#0c4039,#165c4a 62%,#24715b);box-shadow:0 16px 30px #0a3d2f25;min-height:272px}
+.welcome::after{content:none}
+.welcome h1{font-size:clamp(28px,4.2vw,52px);line-height:1.18;letter-spacing:-.05em;margin:12px 0 10px;color:#fff}
+.welcome h1 em{font-style:normal;color:#bdf6d9}
+.welcome p{color:#d6eee3;font-size:13px;max-width:34em}
+.welcome .mini-kicker{display:inline-flex;align-items:center;gap:8px;color:#cdeee0;font-size:11px;letter-spacing:.08em}
+.mini-kicker span{width:7px;height:7px;border-radius:50%;background:#f7cf92}
+.hero-copy{position:relative;z-index:1}
+.hero-visual{min-width:0;align-self:center}
+.hero-visual svg{display:block;width:100%;max-height:240px}
+.hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:18px}
+.hero-actions button{display:inline-flex;align-items:center;gap:8px;padding:10px 13px;min-height:41px;font-size:13px;font-weight:800;border-radius:10px;cursor:pointer}
+.studio-primary{background:#d1f8e3;color:#103d30;border:1px solid transparent}
+.studio-primary:hover{background:#edfff3}
+.studio-secondary{background:#ffffff12;border:1px solid #bbf2dc69;color:#edfff5}
+.studio-secondary:hover{background:#ffffff22}
+.welcome button:focus-visible{outline-color:#f7cf92}
+.welcome .welcome-signoff{position:static;display:block;text-align:left;margin:12px 0 0;color:#d5ede1;font-size:11px}
+.studio-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 24px}
+.studio-stats>*{display:grid;gap:4px;text-align:left;min-width:0;padding:11px 14px;background:var(--studio-card);border:1px solid var(--line);border-radius:13px;color:var(--ink)}
+.studio-stats span{font-size:11px;color:var(--muted);font-weight:700}
+.studio-stats strong{font-size:clamp(16px,2.6vw,25px);font-variant-numeric:tabular-nums;white-space:nowrap}
+.studio-stats button{cursor:pointer}
+.studio-stats button:hover,.study-row:hover{border-color:var(--studio-accent)}
+.studio-stats small{font-size:12px;color:var(--studio-accent)}
+.lesson-heading{margin-top:20px;align-items:center}
+.lesson-heading h2{font-size:clamp(24px,3.3vw,36px);letter-spacing:-.035em}
+.lesson-heading .eyebrow{color:var(--studio-accent)}
+.level-badge{color:var(--studio-strong);white-space:normal;text-align:center}
+.lesson-path{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+.lesson-path a{padding:7px 10px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-weight:700;font-size:12px;color:var(--studio-accent);background:var(--studio-card)}
+.lesson-path a:hover{border-color:var(--studio-accent)}
+:is(.lesson-heading,.lesson-intro,.example,.demo-panel,.practice-shell,.formal-panel){scroll-margin-top:76px}
+.panel,.practice-shell{border:1px solid var(--line);border-radius:17px}
+.lesson-intro .panel{min-width:0}
+.panel h3{font-size:17px}
+.concept,.example-problem,.question-text{font-size:15px;line-height:1.75}
+.teacher-note,.step-body span,.formal-steps li,.solution-box,.hint-line{font-size:13px}
+.example-head{align-items:start}
+.formal-panel{margin:14px 0 16px}
+.formal-panel summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none;font-size:15px;font-weight:800}
+.formal-panel summary::-webkit-details-marker{display:none}
+.formal-panel summary::after{content:"＋";color:var(--studio-accent)}
+.formal-panel[open] summary::after{content:"−"}
+.formal-given{margin-top:14px!important}
+.formal-badge{color:var(--studio-accent)}
+.question-meta{align-items:start}
+.question-source{font-size:11px;line-height:1.5}
+.question-num{white-space:nowrap}
+.stages{gap:8px;padding-bottom:8px}
+.stage-tab{font-size:12px;border:1px solid var(--line);border-radius:9px;padding:9px 10px}
+.stage-tab.active{background:var(--green-soft);border-color:var(--studio-accent);color:var(--studio-strong)}
+.question-map{display:flex;gap:6px;flex-wrap:wrap;padding:10px 0 13px}
+.question-map button{min-width:36px;min-height:36px;padding:5px 6px;border:1px solid var(--line);background:var(--studio-card);color:var(--muted);border-radius:8px;cursor:pointer;font-size:12px;font-weight:800}
+.question-map button.is-solved{background:var(--green-soft);color:var(--studio-strong)}
+.question-map button[aria-current="step"]{border-color:var(--studio-accent);box-shadow:inset 0 0 0 1px var(--studio-accent);color:var(--studio-strong)}
+.question-context{padding:8px 12px;background:var(--studio-tint);border-radius:9px;margin:0 0 12px;font-size:13px;color:var(--muted)}
+.question-context summary{cursor:pointer;font-weight:800;color:var(--studio-accent)}
+.question-context p{margin:7px 0 0;line-height:1.6}
+#bookmarkQuestion[aria-pressed="true"]{background:var(--green-soft);color:var(--studio-accent);border-color:var(--studio-accent)}
+.answer-row input{min-height:43px;font-size:16px}
+.feedback,.stage-progress{font-size:12px}
+.question-actions .small-actions{flex-wrap:wrap}
+.question-actions button,.level-footer button{min-height:37px}
+.fx-group{display:block}
+.fx-btn{min-height:38px}
+body.fx-on :is(.studio-stats,.lesson-path){display:none}
+.study-dialog{box-sizing:border-box;width:min(94vw,700px);max-height:86dvh;padding:0;background:var(--studio-card);color:var(--ink);border:1px solid var(--line);border-radius:19px;box-shadow:0 24px 85px #071d1761}
+.study-dialog::backdrop{background:#0a231cb0;backdrop-filter:blur(3px)}
+.study-dialog-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:17px 18px 12px}
+.study-dialog-head h2{margin:0;font-size:21px}
+.study-dialog-tools{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 10px}
+.study-dialog-tools:empty{display:none}
+.study-dialog-tools input{width:100%;min-height:42px;border:1px solid var(--line);border-radius:9px;background:var(--studio-rail);color:var(--ink);padding:8px 11px;font-size:16px}
+.study-dialog-tools button[aria-pressed="true"]{background:var(--green-soft);color:var(--studio-accent);border-color:var(--studio-accent)}
+.study-dialog-list{display:grid;gap:7px;padding:0 18px 19px}
+.study-row{display:grid;gap:3px;text-align:left;padding:10px 12px;min-height:51px;width:100%;background:var(--studio-rail);color:var(--ink);border:1px solid var(--line);border-radius:10px;cursor:pointer}
+.study-row strong{font-size:14px}
+.study-row small,.study-empty{font-size:12px;line-height:1.55;color:var(--muted)}
+.study-row small{overflow-wrap:anywhere}
+.study-row b{color:var(--studio-accent)}
+@media(max-width:900px){.app{grid-template-columns:200px minmax(0,1fr)}.app>aside{padding:18px 11px}.nav-item{grid-template-columns:35px minmax(0,1fr) 13px}}
+@media(max-width:680px){
+  .app{display:block}.app>aside,html[data-theme="dark"] .app>aside{display:none}
+  main{padding:0 13px 34px}
+  .topline{position:sticky;top:0;z-index:8;margin:0 -13px 10px;padding:7px 10px;min-height:53px;background:var(--studio-rail);border-bottom:1px solid var(--line)}
+  .topline .eyebrow{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .top-actions{flex-wrap:nowrap;gap:4px;flex:none}.top-actions button{padding:6px 8px;min-height:36px;font-size:11px}
+  .top-actions #themeToggle .theme-label{display:none}.top-actions #themeToggle .theme-icon{margin:0}
+  .welcome{grid-template-columns:minmax(0,1fr) minmax(0,.45fr);min-height:0;padding:21px 17px;border-radius:16px}
+  .hero-visual svg{min-width:0}.welcome h1{font-size:clamp(23px,6.7vw,38px)}
+  .welcome p{font-size:12px}.hero-actions{gap:6px;margin-top:13px}.hero-actions button{font-size:11px;padding:8px 9px;min-height:38px}
+  .studio-stats{gap:5px;margin:8px 0 17px}.studio-stats>*{padding:8px 9px;border-radius:10px}.studio-stats span{font-size:10px}
+  .lesson-heading{gap:8px}.level-badge{max-width:9em;font-size:9px}
+  .question-actions>div:last-child{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .question-actions .next-btn{margin-left:auto}.question-map{gap:5px}.question-map button{min-width:34px}
+  .study-dialog{width:calc(100% - 18px);max-height:88dvh}
+  .mobile-pdf{display:inline-flex}
+}
+@media(max-width:400px){.welcome{grid-template-columns:1fr}.hero-visual{display:none}.topline .eyebrow{font-size:10px}}
+#backToCourse{display:none}
+body.fx-on #backToCourse{display:inline-block}
+.study-row[aria-current="true"]{border-color:var(--studio-accent)}
+.mobile-pdf{text-decoration:none;align-items:center}
+</style>
+</head>
 <body>
+<a class="skip-content" href="#lessonStart">跳到课程内容</a>
 <div class="app">
-  <aside>
+  <aside aria-label="章节侧栏">
     <div class="brand"><div class="brand-mark">∑</div><div>概率实验室<small>第 26 章 · 完整学习路线</small></div></div>
     <a class="book-link" href="./probability-textbook.pdf" target="_blank" rel="noopener">打开配套课本 PDF ↗</a>
     <div class="overall"><div class="overall-label"><span>整章学习进度</span><strong id="overallCount">0 / 22 关</strong></div><div class="progress"><span id="overallBar"></span></div></div>
-    <div id="desktopNav"></div>
+    <nav id="desktopNav" aria-label="课本章节"></nav>
+    <button class="quiet-btn" id="resetProgress" type="button">清空本机进度</button>
     <div class="mobile-course-select"><select id="mobileNav" aria-label="跳转到课本小节"></select></div>
   </aside>
   <main>
-    <div class="topline"><div class="eyebrow" id="breadcrumb">概率 · 从具体结果到概率模型</div><div class="top-actions"><button class="quiet-btn" id="themeToggle" type="button" aria-pressed="false"><span class="theme-icon" id="themeIcon" aria-hidden="true">🌙</span><span class="theme-label" id="themeLabel">深色模式</span></button><button class="quiet-btn" id="resetProgress" type="button">清空本机进度</button></div></div>
-    <section class="welcome"><div><div class="mini-kicker">从课本第 210 页开始</div><h1>想，全是问题；<br>做，才有答案。</h1><p>按课本节奏拆成 21 个小节关卡，再用整章总复习收尾。先学概念、看例题逐步推导，再依次完成随堂练习、习题和总复习难题。所有题目按教材题型改编，每题都附提示与完整解法。</p><div class="welcome-signoff">一起加油！<span>——义和</span></div></div><div class="hero-progress"><strong id="heroCount">0 / 22</strong><span>小关卡完成</span></div></section>
-    <div class="lesson-heading"><div><div class="eyebrow" id="lessonCode">26.1a</div><h2 id="lessonTitle"></h2><p id="lessonPages"></p></div><span class="level-badge" id="lessonState">未完成</span></div>
+    <div class="topline"><div class="eyebrow" id="breadcrumb">概率 · 从具体结果到概率模型</div><div class="top-actions"><button class="quiet-btn" id="themeToggle" type="button" aria-pressed="false"><span class="theme-icon" id="themeIcon" aria-hidden="true">🌙</span><span class="theme-label" id="themeLabel">深色模式</span></button><button class="quiet-btn" id="openCatalog" type="button">章节</button><button class="quiet-btn" id="openReview" type="button">复习</button><button class="quiet-btn" id="backToCourse" type="button">返回课程</button></div></div>
+    <section class="welcome" aria-labelledby="welcomeTitle">
+      <div class="hero-copy">
+        <div class="mini-kicker"><span></span> 高中数学 · 第 26 章</div>
+        <h1 id="welcomeTitle">想，全是问题；<br><em>做，才有答案。</em></h1>
+        <p>沿着课本学概率。看懂例题，动手做实验，再用分层练习检验自己。</p>
+        <div class="hero-actions">
+          <button type="button" id="resumePractice" class="studio-primary">开始学习 <span aria-hidden="true">→</span></button>
+          <button type="button" id="openLabs" class="studio-secondary">互动实验 <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="welcome-signoff">一起加油！<span>——义和</span></div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 400 250" fill="none">
+          <defs>
+            <pattern id="studioGrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" stroke="#b4f4e2" stroke-opacity=".12"/></pattern>
+            <linearGradient id="studioArea" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#b3f1d9" stop-opacity=".8"/><stop offset="1" stop-color="#b3f1d9" stop-opacity=".09"/></linearGradient>
+          </defs>
+          <rect x="20" y="19" width="360" height="202" rx="15" fill="url(#studioGrid)" stroke="#9af0d6" stroke-opacity=".18"/>
+          <path d="M44 183H358M201 44V201" stroke="#bdffeb" stroke-opacity=".45" stroke-dasharray="4 6"/>
+          <path d="M201 66c37 0 53 43 78 76 17 22 34 34 68 40H201Z" fill="url(#studioArea)"/>
+          <path d="M47 181c46-4 63-15 78-38 25-37 37-77 76-77 37 0 53 43 78 76 17 22 34 34 68 40" stroke="#baf7de" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="201" cy="66" r="5" fill="#ffcf88"/>
+          <text x="47" y="47" fill="#baf7de" font-size="12" font-weight="700">NORMAL DISTRIBUTION</text>
+          <text x="202" y="217" fill="#d0f4e8" text-anchor="middle" font-size="12">μ</text>
+          <text x="355" y="202" fill="#d0f4e8" text-anchor="end" font-size="12">x →</text>
+        </svg>
+      </div>
+    </section>
+    <section class="studio-stats" aria-label="学习概况">
+      <div><span>已通关</span><strong id="heroCount">0 / 22</strong></div>
+      <div><span>已答对</span><strong id="questionStat">—</strong></div>
+      <button type="button" id="openReviewStats"><span>待复习错题</span><strong id="reviewStat">0 <small>↗</small></strong></button>
+    </section>
+    <div class="lesson-heading" id="lessonStart" tabindex="-1"><div><div class="eyebrow" id="lessonCode">26.1a</div><h2 id="lessonTitle"></h2><p id="lessonPages"></p></div><span class="level-badge" id="lessonState">未完成</span></div>
+    <nav class="lesson-path" aria-label="本关学习步骤"><a href="#lessonStart">01 概念</a><a href="#exampleStart">02 例题</a><a href="#demoStart">03 图解</a><a href="#practiceStart">04 练习</a></nav>
     <section class="lesson-intro">
       <article class="panel"><h3>本关目标与核心概念</h3><div class="concept" id="concept"></div><div class="formula-spotlight" id="formulaSpotlight" role="note" aria-label="本节核心公式" hidden></div><div class="goals" id="goals"></div><div class="visual-strip"><div class="visual-icon" id="visualIcon">🎲</div><span id="visualCaption"></span></div></article>
-      <article class="panel example"><div class="example-head"><h3>课本例题思路 · 从基础开始</h3><span class="example-label" id="exampleLabel">例题导学</span></div><p class="example-problem" id="exampleProblem"></p><div class="teacher-guide"><div class="teacher-note" id="exampleReading"></div><div class="teacher-note" id="exampleBasics"></div></div><ol class="solution-steps" id="exampleSteps"></ol><div class="teacher-takeaway" id="exampleTakeaway"></div></article>
+      <article class="panel example" id="exampleStart" tabindex="-1"><div class="example-head"><h3>课本例题思路 · 从基础开始</h3><span class="example-label" id="exampleLabel">例题导学</span></div><p class="example-problem" id="exampleProblem"></p><div class="teacher-guide"><div class="teacher-note" id="exampleReading"></div><div class="teacher-note" id="exampleBasics"></div></div><ol class="solution-steps" id="exampleSteps"></ol><div class="teacher-takeaway" id="exampleTakeaway"></div></article>
     </section>
-    <section class="panel demo-panel" aria-labelledby="demoTitle"><div class="demo-header"><div><h3 id="demoTitle">看图跟着想</h3><p id="demoSubtitle">图像会把例题里的“可能结果”一步步显示出来。</p></div><span class="demo-chip" id="demoChip">图解动画</span></div><div class="demo-stage" id="demoStage" aria-live="polite"></div><p class="demo-caption" id="demoCaption"></p><div class="demo-footer"><span>动画只帮助看清思路，最后仍要回到数学表达式。</span><button class="demo-replay" id="replayDemo" type="button">↻ 再看一次</button></div></section>
-    <section class="practice-shell" aria-labelledby="practiceTitle">
-      <div class="practice-top"><div class="practice-title-row"><div><h3 id="practiceTitle">闯关练习</h3><p id="practiceSub">按课本的先后顺序做题。答对后再进入下一题。</p></div><span class="difficulty d1" id="difficultyBadge">基础 · 随堂</span></div><div class="stages" role="tablist" aria-label="练习难度阶段" id="stageTabs"></div></div>
-      <div class="question-area"><div class="question-meta"><span class="question-source" id="questionSource"></span><span class="question-num" id="questionNum"></span></div><p class="question-text" id="questionText"></p><div class="hint-line" id="hintLine" hidden></div><form id="answerForm" class="answer-row"><div id="answerFields" class="answer-fields" hidden></div><input id="answerInput" autocomplete="off" aria-label="输入答案" placeholder="输入数值、分数或关键词"><button type="submit">提交答案</button></form><div class="feedback" id="feedback" aria-live="polite"></div><div class="solution-box" id="solutionBox"></div><div class="question-actions"><div class="small-actions"><button class="inline-btn" id="showHint" type="button">给我一点提示</button><button class="inline-btn" id="showSolution" type="button">查看完整解法</button></div><div><span class="stage-progress" id="stageProgress"></span>　<button class="next-btn" id="nextQuestion" type="button">下一题 →</button></div></div></div>
+    <section class="panel demo-panel" id="demoStart" tabindex="-1" aria-labelledby="demoTitle"><div class="demo-header"><div><h3 id="demoTitle">看图跟着想</h3><p id="demoSubtitle">图像会把例题里的“可能结果”一步步显示出来。</p></div><span class="demo-chip" id="demoChip">图解动画</span></div><div class="demo-stage" id="demoStage" aria-live="polite"></div><p class="demo-caption" id="demoCaption"></p><div class="demo-footer"><span>动画只帮助看清思路，最后仍要回到数学表达式。</span><button class="demo-replay" id="replayDemo" type="button">↻ 再看一次</button></div></section>
+    <details class="panel formal-panel"><summary><span id="formalTitle">课本式标准作答</span><span class="formal-badge">例题完整书写</span></summary><p class="formal-given" id="formalGiven"></p><ol class="formal-steps" id="formalSteps"></ol><div class="formal-answer" id="formalAnswer"></div></details>
+    <section class="practice-shell" id="practiceStart" tabindex="-1" aria-labelledby="practiceTitle">
+      <div class="practice-top"><div class="practice-title-row"><div><h3 id="practiceTitle">闯关练习</h3><p id="practiceSub">切换题号自由练习。答对的题会自动记录。</p></div><span class="difficulty d1" id="difficultyBadge">基础 · 随堂</span></div><div class="stages" role="group" aria-label="练习难度阶段" id="stageTabs"></div></div>
+      <div class="question-area"><div class="question-meta"><span class="question-source" id="questionSource"></span><span class="question-num" id="questionNum"></span></div><div class="question-map" role="group" aria-label="本档题号" id="questionMap"></div><details class="question-context" id="questionContext" hidden><summary>查看前题条件</summary><p></p></details><p class="question-text" id="questionText"></p><div class="hint-line" id="hintLine" hidden></div><form id="answerForm" class="answer-row"><div id="answerFields" class="answer-fields" hidden></div><input id="answerInput" autocomplete="off" aria-label="输入答案" placeholder="输入数值、分数或关键词"><button type="submit">提交答案</button></form><div class="feedback" id="feedback" tabindex="-1" aria-live="polite"></div><div class="solution-box" id="solutionBox"></div><div class="question-actions"><div class="small-actions"><button class="inline-btn" id="showHint" type="button" aria-controls="hintLine" aria-expanded="false">给我一点提示</button><button class="inline-btn" id="showSolution" type="button" aria-controls="solutionBox" aria-expanded="false">查看完整解法</button><button class="inline-btn" id="bookmarkQuestion" type="button" aria-pressed="false">☆ 收藏本题</button></div><div><span class="stage-progress" id="stageProgress"></span>　<button class="next-btn" id="nextQuestion" type="button">下一题 →</button></div></div></div>
     </section>
     <div class="level-footer"><button id="prevLevel" type="button">← 上一小节</button><button id="nextLevel" class="next-level" type="button">下一小节 →</button></div>
-    <section class="panel formal-panel" aria-labelledby="formalTitle"><div class="formal-head"><h3 id="formalTitle">课本式标准作答</h3><span class="formal-badge">规范步骤 · 可作答范例</span></div><p class="formal-given" id="formalGiven"></p><ol class="formal-steps" id="formalSteps"></ol><div class="formal-answer" id="formalAnswer"></div></section>
   </main>
 </div>
 <div class="toast" id="toast" role="status"></div>
+<dialog id="studyDialog" class="study-dialog" aria-labelledby="studyDialogTitle">
+  <div class="study-dialog-head">
+    <h2 id="studyDialogTitle">学习目录</h2>
+    <form method="dialog"><button type="submit" class="quiet-btn" aria-label="关闭面板">关闭 ×</button></form>
+  </div>
+  <div id="studyDialogTools" class="study-dialog-tools"></div>
+  <div id="studyDialogList" class="study-dialog-list"></div>
+</dialog>
 <script>
 (function(){'use strict';
 function Q(text,answer,hint,solution,source){return{text:text,answers:Array.isArray(answer)?answer:[answer],hint:hint,solution:solution,source:source||''};}
@@ -598,10 +774,8 @@ function renderDemo(item){clearInterval(galtonTimer);var oldTabs=document.getEle
 if(item.code==='26.7a'){tabbed([{label:'图 26–4 高尔顿钉板',title:'高尔顿钉板：球越多，越像钟形曲线',sub:'课本图 26–4：每次碰到钉子，球向左或向右的机会相等。',cap:'落入第 k 格的概率是 C(n,k)(1/2)ⁿ；n 够大、球够多时，直方图逼近对称的钟形曲线，这就是常态（正态）分布曲线。',run:function(){renderGalton(12);}},{label:'图 26–8 查表与对称',title:copy.title,sub:copy.subtitle,cap:copy.caption,run:function(){renderGuidedDemo(item,g.visual);}}]);return;}
 renderGuidedDemo(item,g.visual);}
 
-var stageKeys=['class','exercise','review'],stageIndex=0,lessonIndex=0,questionIndex=0;
-
-var stageKeys=['class','exercise','review'],stageIndex=0,lessonIndex=0,questionIndex=0;
-var done={},solved={},activeLesson=0,multiAnswerDrafts={},multiAnswerCorrect={},multiAnswerIncorrect={};
+var stageIndex=0,lessonIndex=0,questionIndex=0;
+var done={},solved={},multiAnswerDrafts={},multiAnswerCorrect={},multiAnswerIncorrect={};
 var questionSetVersion='book-originals-2026-11-v3';
 try{done=JSON.parse(localStorage.getItem('probabilityFullDone')||'{}')||{};solved=JSON.parse(localStorage.getItem('probabilityFullSolved')||'{}')||{};if(localStorage.getItem('probabilityQuestionSetVersion')!==questionSetVersion){Object.keys(bookPractice).forEach(function(code){done[code]=false;});done['总复习']=false;localStorage.setItem('probabilityFullDone',JSON.stringify(done));localStorage.setItem('probabilityQuestionSetVersion',questionSetVersion);}}catch(e){done={};solved={};}
 var desktopNav=document.getElementById('desktopNav'),mobileNav=document.getElementById('mobileNav');
@@ -628,13 +802,255 @@ function storageKey(item,stage,i){var q=stage.questions[i];return item.code+'|'+
 function saveState(){try{localStorage.setItem('probabilityFullDone',JSON.stringify(done));localStorage.setItem('probabilityFullSolved',JSON.stringify(solved));}catch(e){}}
 function solvedCount(item){var count=0;item.stages.forEach(function(stage){stage.questions.forEach(function(q,i){if(solved[storageKey(item,stage,i)])count++;});});return count;}
 function totalCount(item){return item.stages.reduce(function(sum,stage){return sum+stage.questions.length;},0);}
+var studioStorageKey = 'probabilityStudyStudioV1';
+var studyDialog = document.getElementById('studyDialog');
+var dialogTools = document.getElementById('studyDialogTools');
+var dialogList = document.getElementById('studyDialogList');
+var studyState = readStudyState();
+
+function readStudyState() {
+  try {
+    var state = JSON.parse(localStorage.getItem(studioStorageKey) || '{}') || {};
+    return { cursor: state.cursor || {}, saved: state.saved || {}, mistakes: state.mistakes || {}, partial: state.partial || {} };
+  } catch (error) {
+    return { cursor: {}, saved: {}, mistakes: {}, partial: {} };
+  }
+}
+
+function saveStudyState() {
+  try { localStorage.setItem(studioStorageKey, JSON.stringify(studyState)); } catch (error) {}
+}
+
+function restoreStudyPosition() {
+  var cursor = studyState.cursor;
+  var index = lessons.findIndex(function (lesson) { return lesson.code === cursor.code; });
+  if (index < 0) return;
+  lessonIndex = index;
+  var stages = currentLesson().stages;
+  stageIndex = Math.max(0, stages.findIndex(function (stage) { return stage.key === cursor.stage; }));
+  if (Number.isInteger(cursor.question) && cursor.question >= 0 && cursor.question < stages[stageIndex].questions.length) {
+    questionIndex = cursor.question;
+  }
+}
+
+function updateStudioStats() {
+  var total = 0, correct = 0, pending = 0;
+  lessons.forEach(function (lesson) {
+    total += totalCount(lesson);
+    correct += solvedCount(lesson);
+    lesson.stages.forEach(function (stage) {
+      stage.questions.forEach(function (_, index) {
+        var key = storageKey(lesson, stage, index);
+        if (studyState.mistakes[key] && !solved[key]) pending++;
+      });
+    });
+  });
+  document.getElementById('questionStat').textContent = correct + ' / ' + total;
+  document.getElementById('reviewStat').firstChild.nodeValue = pending + ' ';
+}
+
+function studyButton(label, callback, className) {
+  var button = document.createElement('button');
+  button.type = 'button';
+  button.className = className || 'quiet-btn';
+  button.textContent = label;
+  button.addEventListener('click', callback);
+  return button;
+}
+
+function studyRow(title, detail, callback) {
+  var button = studyButton('', callback, 'study-row');
+  var name = document.createElement('strong'), description = document.createElement('small');
+  name.textContent = title;
+  description.textContent = detail;
+  button.append(name, description);
+  dialogList.appendChild(button);
+  return button;
+}
+
+function showStudyDialog(title) {
+  document.getElementById('studyDialogTitle').textContent = title;
+  dialogTools.replaceChildren();
+  dialogList.replaceChildren();
+  if (!studyDialog.open) studyDialog.showModal();
+}
+
+function showEmptyStudyList(message) {
+  var line = document.createElement('p');
+  line.className = 'study-empty';
+  line.textContent = message;
+  dialogList.appendChild(line);
+}
+
+function showCourseCatalog() {
+  showStudyDialog('学习目录');
+  var search = document.createElement('input');
+  search.type = 'search';
+  search.placeholder = '搜章节、知识点或页码，如 26.7b';
+  search.setAttribute('aria-label', '搜索章节、知识点或页码');
+  var pdf = document.querySelector('.book-link').cloneNode(true);
+  pdf.className = 'quiet-btn mobile-pdf';
+  dialogTools.append(search, pdf, studyButton('清空本机进度', function () {
+    document.getElementById('resetProgress').click();
+  }, 'quiet-btn mobile-pdf'));
+  function listLessons() {
+    dialogList.replaceChildren();
+    var query = search.value.trim().toLowerCase().replace(/\s+/g, '');
+    lessons.forEach(function (lesson, index) {
+      var searchable = (lesson.code + lesson.title + lesson.goals + lesson.pages).toLowerCase().replace(/\s+/g, '');
+      if (!searchable.includes(query)) return;
+      var row = studyRow(lesson.code + ' · ' + lesson.title,
+        '课本 ' + lesson.pages + ' · 已答对 ' + solvedCount(lesson) + '/' + totalCount(lesson) + ' 题',
+        function () { studyDialog.close(); loadLesson(index); });
+      if (index === lessonIndex) row.setAttribute('aria-current', 'true');
+    });
+    if (!dialogList.children.length) showEmptyStudyList('没有找到对应章节，试试章节编号或更短的关键词。');
+  }
+  search.addEventListener('input', listLessons);
+  listLessons();
+  search.focus();
+}
+
+function showReviewDesk() {
+  showStudyDialog('我的复习');
+  var wrong = studyButton('错题记录', function () { showQuestions('mistakes'); });
+  var saved = studyButton('收藏题目', function () { showQuestions('saved'); });
+  dialogTools.append(wrong, saved);
+  function showQuestions(mode) {
+    wrong.setAttribute('aria-pressed', String(mode === 'mistakes'));
+    saved.setAttribute('aria-pressed', String(mode === 'saved'));
+    dialogList.replaceChildren();
+    var rows = [];
+    lessons.forEach(function (lesson, lessonNumber) {
+      lesson.stages.forEach(function (stage, stageNumber) {
+        stage.questions.forEach(function (question, index) {
+          var key = storageKey(lesson, stage, index);
+          if (studyState[mode][key]) rows.push({
+            lesson: lesson, stage: stage, question: question, key: key, lessonNumber: lessonNumber, stageNumber: stageNumber, index: index
+          });
+        });
+      });
+    });
+    rows.sort(function (a, b) {
+      return Number(!!solved[a.key]) - Number(!!solved[b.key]) || studyState[mode][b.key] - studyState[mode][a.key];
+    });
+    rows.forEach(function (row) {
+      studyRow(row.lesson.code + ' · ' + row.stage.name + ' · 第 ' + (row.index + 1) + ' 题',
+        (solved[row.key] ? '已答对 · ' : '待练习 · ') + row.question.text,
+        function () {
+          studyDialog.close();
+          loadLesson(row.lessonNumber, row.stageNumber, row.index, 'practiceStart');
+        });
+    });
+    if (!rows.length) showEmptyStudyList(mode === 'mistakes' ? '提交的错题会自动记在这里。' : '在练习区点「收藏本题」，就能从这里回到这道题。');
+  }
+  showQuestions('mistakes');
+  wrong.focus();
+}
+
+function showLabCatalog() {
+  showStudyDialog('互动实验室');
+  var details = ['反复掷骰子，观察实际频率和理论概率的差距。', '调节试验次数和成功率，比较概率与模拟结果。', '移动区间边界，看标准化如何改变曲线下的面积。'];
+  document.querySelectorAll('.fx-btn').forEach(function (labButton, index) {
+    studyRow(labButton.textContent, details[index] || '打开互动实验', function () {
+      studyDialog.close();
+      labButton.click();
+      var title = document.querySelector('#fxView h3');
+      if (title) { title.tabIndex = -1; title.focus({preventScroll:true}); }
+    });
+  });
+  if (!dialogList.children.length) showEmptyStudyList('当前没有可打开的实验。');
+}
+
+function scrollToStudySection(id) {
+  var target = document.getElementById(id);
+  if (!target) return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  target.focus({preventScroll:true});
+  target.scrollIntoView({behavior:reduceMotion?'instant':'smooth', block:'start'});
+}
+
+function renderQuestionWorkspace(item, stage, question, key) {
+  studyState.cursor = { code:item.code, stage:stage.key, question:questionIndex };
+  saveStudyState();
+  var resume = document.getElementById('resumePractice');
+  resume.firstChild.nodeValue = lessonIndex || stageIndex || questionIndex || solvedCount(item) ? '继续练习 · ' + item.code + ' ' : '开始学习 ';
+  var map = document.getElementById('questionMap');
+  map.replaceChildren();
+  stage.questions.forEach(function (_, index) {
+    var doneQuestion = solved[storageKey(item, stage, index)];
+    var button = studyButton(String(index + 1), function () {
+      questionIndex = index;
+      renderQuestion();
+      map.children[index].focus();
+    }, doneQuestion ? 'is-solved' : '');
+    button.setAttribute('aria-label', '第 ' + (index + 1) + ' 题' + (doneQuestion ? '，已答对' : ''));
+    if (index === questionIndex) button.setAttribute('aria-current', 'step');
+    map.appendChild(button);
+  });
+
+  var context = document.getElementById('questionContext');
+  var previous = stage.questions[questionIndex - 1];
+  if (!previous && stageIndex > 0) {
+    var previousStage = item.stages[stageIndex - 1];
+    previous = previousStage.questions[previousStage.questions.length - 1];
+  }
+  var needsContext = /沿用|上述|同一题|同一袋|同一排列|上一题|同一概率/.test(question.text) && !!previous;
+  context.hidden = !needsContext;
+  context.open = false;
+  var conditions = [];
+  if (needsContext) {
+    var earlier = item.stages.slice(0, stageIndex).flatMap(function (group) { return group.questions; })
+      .concat(stage.questions.slice(0, questionIndex));
+    while (earlier.length) {
+      var preceding = earlier.pop().text;
+      conditions.unshift(preceding);
+      if (!/沿用|上述|同一题|同一袋|同一排列|上一题|同一概率/.test(preceding)) break;
+    }
+  }
+  context.querySelector('p').textContent = conditions.join('　');
+  updateBookmarkButton(key);
+}
+
+function updateBookmarkButton(key) {
+  var bookmark = document.getElementById('bookmarkQuestion');
+  bookmark.setAttribute('aria-pressed', String(!!studyState.saved[key]));
+  bookmark.textContent = studyState.saved[key] ? '★ 已收藏' : '☆ 收藏本题';
+}
+
+function noteMistake(key) {
+  if (solved[key]) return;
+  studyState.mistakes[key] = Date.now();
+  saveStudyState();
+  updateStudioStats();
+}
+
+document.getElementById('openCatalog').addEventListener('click', showCourseCatalog);
+document.getElementById('openReview').addEventListener('click', showReviewDesk);
+document.getElementById('openReviewStats').addEventListener('click', showReviewDesk);
+document.getElementById('openLabs').addEventListener('click', showLabCatalog);
+document.getElementById('backToCourse').addEventListener('click', function () {
+  loadLesson(lessonIndex, stageIndex, questionIndex);
+});
+document.getElementById('resumePractice').addEventListener('click', function () {
+  scrollToStudySection(lessonIndex || stageIndex || questionIndex || solvedCount(currentLesson()) ? 'practiceStart' : 'lessonStart');
+});
+document.getElementById('bookmarkQuestion').addEventListener('click', function () {
+  var item = currentLesson(), key = storageKey(item, item.stages[stageIndex], questionIndex);
+  if (studyState.saved[key]) delete studyState.saved[key];
+  else studyState.saved[key] = Date.now();
+  saveStudyState();
+  updateBookmarkButton(key);
+});
+
 function updateProgress(){
   var count=lessons.filter(function(l){return !!done[l.code];}).length;
   document.getElementById('overallCount').textContent=count+' / '+lessons.length+' 关';
   document.getElementById('overallBar').style.width=(count/lessons.length*100)+'%';
   document.getElementById('heroCount').textContent=count+' / '+lessons.length;
-  document.querySelectorAll('.nav-item').forEach(function(btn){var l=lessons[Number(btn.dataset.index)];btn.classList.toggle('active',Number(btn.dataset.index)===lessonIndex);btn.querySelector('.nav-check').textContent=done[l.code]?'✓':'·';});
-}function renderStageTabs(){var tabs=document.getElementById('stageTabs');tabs.innerHTML='';currentLesson().stages.forEach(function(stage,index){var btn=document.createElement('button');btn.type='button';btn.className='stage-tab'+(index===stageIndex?' active':'');btn.setAttribute('role','tab');var num=stage.questions.filter(function(q,i){return solved[storageKey(currentLesson(),stage,i)];}).length;btn.innerHTML=stage.name+' <span class="stage-count">'+num+'/'+stage.questions.length+'</span>';btn.addEventListener('click',function(){stageIndex=index;questionIndex=0;renderStageTabs();renderQuestion();});tabs.appendChild(btn);});}
+  updateStudioStats();
+  document.querySelectorAll('.nav-item').forEach(function(btn){var l=lessons[Number(btn.dataset.index)];var active=Number(btn.dataset.index)===lessonIndex;btn.classList.toggle('active',active);if(active)btn.setAttribute('aria-current','true');else btn.removeAttribute('aria-current');btn.querySelector('.nav-check').textContent=done[l.code]?'✓':'·';});
+}
 function renderLesson(){
   var item=currentLesson(),guide=beginnerLessons[item.code]||beginnerLessons['总复习'];
   document.getElementById('lessonCode').textContent=item.code;
@@ -661,6 +1077,9 @@ function renderLesson(){
   document.getElementById('lessonState').textContent=done[item.code]?'本关已通关':'完成三档练习解锁通关';
   document.getElementById('breadcrumb').textContent='第 26 章 · '+item.code+' · '+item.title;
   document.getElementById('mobileNav').value=lessonIndex;
+  document.querySelector('.formal-panel').open=false;
+  document.getElementById('prevLevel').disabled=lessonIndex===0;
+  document.getElementById('nextLevel').disabled=lessonIndex===lessons.length-1;
   renderStageTabs();renderQuestion();updateProgress();
   try{renderDemo(item);}catch(error){var demoStage=document.getElementById('demoStage');demoStage.classList.remove('interactive-stage','guided-stage','union-stage');document.getElementById('demoTitle').textContent='图解加载提示';document.getElementById('demoSubtitle').textContent=item.title+'的互动图解暂时无法显示。';document.getElementById('demoCaption').textContent='课程讲解和练习仍可正常使用。';demoStage.innerHTML='<div class="guide-note"><strong>图解暂时无法加载</strong><span>可以继续学习本节内容并完成练习。</span></div>';}
 }
@@ -668,19 +1087,216 @@ function splitAnswerParts(value){return String(value).split(/[，,、;]/).map(fu
 function answerVariants(question){return question.answers.map(function(answer){return splitAnswerParts(answer);});}
 function answerPartCount(question){var variants=answerVariants(question);return variants.length?variants[0].length:1;}
 function answerPartLabels(question,count){var labels=[],range=question.text.match(/\(([a-z])\)\s*(?:至|到|[-–])\s*\(([a-z])\)/i);if(range){var first=range[1].toLowerCase().charCodeAt(0),last=range[2].toLowerCase().charCodeAt(0);if(last>=first&&last-first<26){for(var code=first;code<=last;code++)labels.push('('+String.fromCharCode(code)+')');}}else{var re=/\(([a-z])\)/gi,match;while((match=re.exec(question.text))!==null){var label='('+match[1].toLowerCase()+')';if(labels.indexOf(label)<0)labels.push(label);}}if(labels.length!==count){labels=[];for(var i=0;i<count;i++)labels.push('第 '+(i+1)+' 项');}return labels;}
-function renderQuestion(){var item=currentLesson(),stage=item.stages[stageIndex];if(questionIndex>=stage.questions.length)questionIndex=stage.questions.length-1;var question=stage.questions[questionIndex],key=storageKey(item,stage,questionIndex),already=!!solved[key],answerFields=document.getElementById('answerFields'),answerInput=document.getElementById('answerInput'),variants=answerVariants(question),partCount=answerPartCount(question),useParts=!!question.multiAnswer&&partCount>1;document.getElementById('difficultyBadge').textContent=stage.difficulty;document.getElementById('difficultyBadge').className='difficulty '+(stageIndex===0?'d1':stageIndex===1?'d2':'d3');document.getElementById('questionSource').textContent=question.source||stage.name+' · '+item.code;document.getElementById('questionNum').textContent='第 '+(questionIndex+1)+' / '+stage.questions.length+' 题';document.getElementById('questionText').textContent=question.text;answerFields.innerHTML='';document.getElementById('answerForm').classList.toggle('multi-answer',useParts);answerFields.hidden=!useParts;answerInput.hidden=useParts;answerInput.value='';answerInput.placeholder=useParts?'分别填写各小题答案':'输入数值、分数或关键词';if(useParts){var labels=answerPartLabels(question,partCount),values=multiAnswerDrafts[key]|| (already?variants[0].slice():Array(partCount).fill('')),correctParts=multiAnswerCorrect[key]||(already?Array(partCount).fill(true):Array(partCount).fill(false)),incorrectParts=multiAnswerIncorrect[key]||Array(partCount).fill(false);multiAnswerDrafts[key]=values;multiAnswerCorrect[key]=correctParts;multiAnswerIncorrect[key]=incorrectParts;for(var partIndex=0;partIndex<partCount;partIndex++){var wrapper=document.createElement('label'),partLabel=document.createElement('span'),field=document.createElement('input'),status=document.createElement('span'),isCorrect=!!correctParts[partIndex];wrapper.className='answer-part'+(isCorrect?' is-correct':incorrectParts[partIndex]?' is-incorrect':'');partLabel.className='answer-part-label';partLabel.textContent=labels[partIndex];field.type='text';field.className='answer-part-input';field.autocomplete='off';field.placeholder='输入本小题答案';field.setAttribute('aria-label',labels[partIndex]+'答案');field.setAttribute('data-part-index',String(partIndex));field.value=values[partIndex]||'';field.disabled=isCorrect;status.className='answer-part-status';status.textContent=isCorrect?'✓ 已答对':incorrectParts[partIndex]?'请检查这一小题':'提交后分别判定';field.addEventListener('input',function(){var index=Number(this.getAttribute('data-part-index'));multiAnswerDrafts[key][index]=this.value;multiAnswerIncorrect[key][index]=false;this.parentElement.classList.remove('is-incorrect');this.parentElement.querySelector('.answer-part-status').textContent='待检查';var feedback=document.getElementById('feedback');if(feedback.classList.contains('try'))feedback.textContent='修改后再次提交；已答对的小题会保留。';});wrapper.appendChild(partLabel);wrapper.appendChild(field);wrapper.appendChild(status);answerFields.appendChild(wrapper);}}document.getElementById('feedback').className='feedback'+(already?' good':'');document.getElementById('feedback').textContent=already?'本题已答对。可以查看解法，或继续下一题。':'';document.getElementById('hintLine').hidden=true;document.getElementById('hintLine').textContent='提示：'+question.hint;document.getElementById('solutionBox').className='solution-box'+(already?' show':'');setSolution(document.getElementById('solutionBox'),question.solution);var completed=stage.questions.filter(function(q,i){return solved[storageKey(item,stage,i)];}).length;document.getElementById('stageProgress').textContent='本档 '+completed+' / '+stage.questions.length+' 答对';document.getElementById('nextQuestion').textContent=questionIndex<stage.questions.length-1?'下一题 →':stageIndex<2?'进入'+item.stages[stageIndex+1].name+' →':done[item.code]?'本关已通关 ✓':'完成本关检查 →';}
-function parseNumber(text){var t=String(text).trim().replace(/,/g,'').replace(/％/g,'%');if(t.endsWith('%')){var p=Number(t.slice(0,-1));return Number.isFinite(p)?p/100:null;}var f=t.match(/^(-?\d+(?:\.\d+)?)\s*\/\s*(-?\d+(?:\.\d+)?)$/);if(f){var d=Number(f[2]);return d===0?null:Number(f[1])/d;}if(t==='')return null;var n=Number(t);return Number.isFinite(n)?n:null;}
-function scalarAnswerMatches(left,right){if(left===right)return true;var n1=parseNumber(left),n2=parseNumber(right);return n1!==null&&n2!==null&&Math.abs(n1-n2)<=Math.max(.000001,Math.abs(n2)*.002);}
-function matches(text,answers){var normalized=String(text).trim().toLowerCase().replace(/\s+/g,'');for(var i=0;i<answers.length;i++){var answer=String(answers[i]).toLowerCase().replace(/\s+/g,'');if(scalarAnswerMatches(normalized,answer))return true;var inputParts=normalized.split(/[，,]/),answerParts=answer.split(/[，,]/);if(inputParts.length>1&&inputParts.length===answerParts.length&&inputParts.every(function(part,index){return scalarAnswerMatches(part,answerParts[index]);}))return true;}return false;}
-function expectedAnswersForPart(question,index){var answers=[];answerVariants(question).forEach(function(parts){if(parts.length>index&&answers.indexOf(parts[index])<0)answers.push(parts[index]);});return answers;}
-function matchesSingleAnswer(text,answers){var normalized=String(text).trim().toLowerCase().replace(/\s+/g,'');if(!normalized)return false;return answers.some(function(answer){var candidate=String(answer).trim().toLowerCase().replace(/\s+/g,'');return normalized===candidate||scalarAnswerMatches(normalized,candidate);});}
-function completeQuestion(item,question,key,message){solved[key]=true;saveState();var all=item.stages.every(function(s){return s.questions.every(function(_,i){return solved[storageKey(item,s,i)];});});if(all){done[item.code]=true;saveState();updateProgress();document.getElementById('lessonState').textContent='本关已通关';toast(item.code+' '+item.title+' 已通关！');}renderStageTabs();renderQuestion();var feedback=document.getElementById('feedback');feedback.className='feedback good';feedback.textContent=message+question.solution;}
-function submitMultiAnswer(item,question,key){var fields=Array.from(document.querySelectorAll('#answerFields .answer-part-input')),count=answerPartCount(question),values=fields.map(function(field){return field.value.trim();}),correctParts=(multiAnswerCorrect[key]||Array(count).fill(false)).slice();for(var i=0;i<count;i++){if(!correctParts[i])correctParts[i]=matchesSingleAnswer(values[i],expectedAnswersForPart(question,i));}multiAnswerDrafts[key]=values;multiAnswerCorrect[key]=correctParts;multiAnswerIncorrect[key]=correctParts.map(function(correct){return !correct;});fields.forEach(function(field,index){var wrapper=field.parentElement,status=wrapper.querySelector('.answer-part-status');wrapper.classList.toggle('is-correct',correctParts[index]);wrapper.classList.toggle('is-incorrect',!correctParts[index]);field.disabled=correctParts[index];status.textContent=correctParts[index]?'✓ 已答对':'请检查这一小题';});var correctCount=correctParts.filter(Boolean).length;if(correctCount===count){completeQuestion(item,question,key,'各小题都正确。');return;}var feedback=document.getElementById('feedback');feedback.className='feedback try';feedback.textContent=(correctCount?'已答对 '+correctCount+' / '+count+' 个小题。':'本次还没有答对小题。')+'绿色项已保留，请修改标红的部分。';var firstWrong=fields.filter(function(field,index){return !correctParts[index];})[0];if(firstWrong)firstWrong.focus();}function toast(message){var el=document.getElementById('toast');el.textContent=message;el.classList.add('show');window.clearTimeout(toast.timer);toast.timer=window.setTimeout(function(){el.classList.remove('show');},2300);}
-document.getElementById('answerForm').addEventListener('submit',function(e){e.preventDefault();var item=currentLesson(),stage=item.stages[stageIndex],q=stage.questions[questionIndex],key=storageKey(item,stage,questionIndex),feedback=document.getElementById('feedback');if(q.multiAnswer&&answerPartCount(q)>1){submitMultiAnswer(item,q,key);return;}if(matches(document.getElementById('answerInput').value,q.answers)){completeQuestion(item,q,key,'正确。');}else{feedback.className='feedback try';feedback.textContent='还差一点。先试用提示拆解题目；可以修改答案再提交。';}});
-document.getElementById('showHint').addEventListener('click',function(){var q=currentLesson().stages[stageIndex].questions[questionIndex];var el=document.getElementById('hintLine');el.hidden=!el.hidden;});
-document.getElementById('showSolution').addEventListener('click',function(){var q=currentLesson().stages[stageIndex].questions[questionIndex];var el=document.getElementById('solutionBox');el.classList.toggle('show');setSolution(el,q.solution);});
-document.getElementById('nextQuestion').addEventListener('click',function(){var item=currentLesson(),stage=item.stages[stageIndex];if(questionIndex<stage.questions.length-1){questionIndex++;renderQuestion();return;}if(stageIndex<2){stageIndex++;questionIndex=0;renderLesson();return;}var all=item.stages.every(function(s){return s.questions.every(function(_,i){return solved[storageKey(item,s,i)];});});if(all){done[item.code]=true;saveState();updateProgress();if(lessonIndex<lessons.length-1){loadLesson(lessonIndex+1);toast('小节通关，已进入下一关。');}else toast('全部关卡完成！');}else toast('本关还有题目没有答对，可以切换练习档继续。');});
-function loadLesson(index){lessonIndex=Math.max(0,Math.min(lessons.length-1,index));stageIndex=0;questionIndex=0;renderLesson();window.scrollTo({top:0,behavior:'smooth'});}
+function renderStageTabs() {
+  var tabs = document.getElementById('stageTabs'), item = currentLesson();
+  tabs.replaceChildren();
+  item.stages.forEach(function (stage, index) {
+    var count = stage.questions.filter(function (_, i) { return solved[storageKey(item, stage, i)]; }).length;
+    var button = studyButton(stage.name + ' ', function () {
+      if (index !== stageIndex) { stageIndex = index; questionIndex = 0; renderStageTabs(); renderQuestion(); }
+      tabs.children[index].focus();
+    }, 'stage-tab' + (index === stageIndex ? ' active' : ''));
+    button.setAttribute('aria-pressed', String(index === stageIndex));
+    var number = document.createElement('span');
+    number.className = 'stage-count';
+    number.textContent = count + '/' + stage.questions.length;
+    button.appendChild(number);
+    tabs.appendChild(button);
+  });
+}
+
+function renderQuestion() {
+  var item = currentLesson(), stage = item.stages[stageIndex];
+  questionIndex = Math.max(0, Math.min(questionIndex, stage.questions.length - 1));
+  var question = stage.questions[questionIndex], key = storageKey(item, stage, questionIndex);
+  var already = !!solved[key], feedback = document.getElementById('feedback');
+  var difficulty = document.getElementById('difficultyBadge');
+  difficulty.textContent = stage.difficulty;
+  difficulty.className = 'difficulty d' + (stageIndex + 1);
+  document.getElementById('questionSource').textContent = question.source || stage.name + ' · ' + item.code;
+  document.getElementById('questionNum').textContent = '第 ' + (questionIndex + 1) + ' / ' + stage.questions.length + ' 题';
+  document.getElementById('questionText').textContent = question.multiAnswer ?
+    question.text.replace(/，?(?:用)?逗号分隔/g, '') : question.text;
+  renderAnswerFields(question, key, already);
+  feedback.className = 'feedback' + (already ? ' good' : '');
+  feedback.textContent = already ? '本题已答对。' : '';
+  var hint = document.getElementById('hintLine'), solution = document.getElementById('solutionBox');
+  hint.hidden = true;
+  hint.textContent = '提示：' + question.hint;
+  solution.classList.toggle('show', already);
+  setSolution(solution, question.solution);
+  document.getElementById('showHint').setAttribute('aria-expanded', 'false');
+  document.getElementById('showSolution').setAttribute('aria-expanded', String(already));
+  var completed = stage.questions.filter(function (_, i) { return solved[storageKey(item, stage, i)]; }).length;
+  document.getElementById('stageProgress').textContent = '本档 ' + completed + ' / ' + stage.questions.length + ' 答对';
+  document.getElementById('nextQuestion').textContent = questionIndex < stage.questions.length - 1 ? '下一题 →' :
+    stageIndex < item.stages.length - 1 ? '进入' + item.stages[stageIndex + 1].name + ' →' :
+    done[item.code] ? '本关已通关 ✓' : '检查本关进度 →';
+  renderQuestionWorkspace(item, stage, question, key);
+}
+
+function renderAnswerFields(question, key, already) {
+  var fields = document.getElementById('answerFields'), input = document.getElementById('answerInput');
+  var count = question.multiAnswer ? answerPartCount(question) : 0;
+  var multi = count > 1;
+  document.getElementById('answerForm').classList.toggle('multi-answer', multi);
+  fields.replaceChildren();
+  fields.hidden = !multi;
+  input.hidden = multi;
+  input.value = '';
+  if (!multi) return;
+
+  var labels = answerPartLabels(question, count);
+  var saved = studyState.partial[key] || [];
+  var values = multiAnswerDrafts[key] || (already ? answerVariants(question)[0].slice() : Array.from({length:count}, function (_, i) { return saved[i] || ''; }));
+  var correct = multiAnswerCorrect[key] || Array.from({length:count}, function (_, i) { return already || !!saved[i]; });
+  var incorrect = multiAnswerIncorrect[key] || Array(count).fill(false);
+  multiAnswerDrafts[key] = values;
+  multiAnswerCorrect[key] = correct;
+  multiAnswerIncorrect[key] = incorrect;
+
+  labels.forEach(function (label, index) {
+    var wrapper = document.createElement('label'), title = document.createElement('span');
+    var field = document.createElement('input'), status = document.createElement('span');
+    wrapper.className = 'answer-part';
+    title.className = 'answer-part-label';
+    title.textContent = label;
+    field.className = 'answer-part-input';
+    field.autocomplete = 'off';
+    field.placeholder = '输入本小题答案';
+    field.setAttribute('aria-label', label + ' 答案');
+    field.value = values[index] || '';
+    status.className = 'answer-part-status';
+    status.id = 'answer-status-' + index;
+    field.setAttribute('aria-describedby', status.id);
+    wrapper.append(title, field, status);
+    setPartStatus(field, correct[index], incorrect[index]);
+    field.addEventListener('input', function () {
+      values[index] = field.value;
+      multiAnswerIncorrect[key][index] = false;
+      setPartStatus(field, false, false);
+    });
+    fields.appendChild(wrapper);
+  });
+}
+
+function setPartStatus(field, correct, incorrect) {
+  var wrapper = field.parentElement;
+  wrapper.classList.toggle('is-correct', !!correct);
+  wrapper.classList.toggle('is-incorrect', !!incorrect);
+  field.readOnly = !!correct;
+  field.setAttribute('aria-invalid', String(!!incorrect));
+  wrapper.querySelector('.answer-part-status').textContent = correct ? '✓ 已答对' :
+    incorrect ? '请检查这一小题' : '待作答';
+}
+
+function normalizeAnswer(value) {
+  return String(value).normalize('NFKC').toLowerCase().replace(/\s+/g, '')
+    .replace(/[−–]/g, '-').replace(/[⁄∕]/g, '/');
+}
+
+function parseNumber(value) {
+  var text = normalizeAnswer(value);
+  if (/^[+-]?\d{1,3}(,\d{3})+(\.\d+)?%?$/.test(text)) text = text.replace(/,/g, '');
+  var fraction = text.match(/^([+-]?(?:\d+\.?\d*|\.\d+))\/([+-]?(?:\d+\.?\d*|\.\d+))$/);
+  if (fraction) return Number(fraction[2]) === 0 ? null : Number(fraction[1]) / Number(fraction[2]);
+  if (!/^[+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?%?$/.test(text)) return null;
+  var valueNumber = text.endsWith('%') ? Number(text.slice(0, -1)) / 100 : Number(text);
+  return Number.isFinite(valueNumber) ? valueNumber : null;
+}
+
+function scalarAnswerMatches(left, right) {
+  left = normalizeAnswer(left);
+  right = normalizeAnswer(right);
+  if (!left) return false;
+  if (left === right) return true;
+  var actual = parseNumber(left), expected = parseNumber(right);
+  return actual !== null && expected !== null && Math.abs(actual - expected) <= Math.max(.000001, Math.abs(expected) * .002);
+}
+
+function matches(text, answers) {
+  return answers.some(function (answer) {
+    if (scalarAnswerMatches(text, answer)) return true;
+    var given = splitAnswerParts(normalizeAnswer(text)), expected = splitAnswerParts(normalizeAnswer(answer));
+    return given.length > 1 && given.length === expected.length && given.every(function (part, i) {
+      return scalarAnswerMatches(part, expected[i]);
+    });
+  });
+}
+
+function completeQuestion(item, question, key, message) {
+  var wasComplete = !!done[item.code];
+  solved[key] = true;
+  delete studyState.partial[key];
+  done[item.code] = solvedCount(item) === totalCount(item);
+  saveState();
+  renderStageTabs();
+  renderQuestion();
+  updateProgress();
+  document.getElementById('lessonState').textContent = done[item.code] ? '本关已通关' : '完成三档练习通关';
+  var feedback = document.getElementById('feedback');
+  feedback.className = 'feedback good';
+  feedback.textContent = message + ' 完整解法已展开。';
+  feedback.focus({preventScroll:true});
+  if (done[item.code] && !wasComplete) toast(item.code + ' ' + item.title + ' 已通关！');
+}
+
+function submitMultiAnswer(item, question, key) {
+  var fields = Array.from(document.querySelectorAll('#answerFields .answer-part-input'));
+  var values = fields.map(function (field) { return field.value.trim(); });
+  var variants = answerVariants(question);
+  var correct = multiAnswerCorrect[key].map(function (passed, i) {
+    return passed || variants.some(function (variant) { return variant[i] !== undefined && scalarAnswerMatches(values[i], variant[i]); });
+  });
+  var incorrect = correct.map(function (passed, i) { return !passed && !!values[i]; });
+  multiAnswerDrafts[key] = values;
+  multiAnswerCorrect[key] = correct;
+  multiAnswerIncorrect[key] = incorrect;
+  fields.forEach(function (field, i) { setPartStatus(field, correct[i], incorrect[i]); });
+
+  var count = correct.filter(Boolean).length;
+  if (count === fields.length) { completeQuestion(item, question, key, '各小题都正确。'); return; }
+  if (count) studyState.partial[key] = values.map(function (value, i) { return correct[i] ? value : ''; });
+  saveStudyState();
+  if (incorrect.some(Boolean)) noteMistake(key);
+  var feedback = document.getElementById('feedback');
+  feedback.className = incorrect.some(Boolean) ? 'feedback try' : 'feedback';
+  feedback.textContent = count ? '已答对 ' + count + ' / ' + fields.length + ' 个小题，继续作答其余小题。' :
+    incorrect.some(Boolean) ? '请检查标记的小题，也可以打开提示。' : '先填写任意一道小题，再提交。';
+  fields.find(function (_, i) { return !correct[i]; }).focus({preventScroll:true});
+}
+
+document.getElementById('answerForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+  var item = currentLesson(), stage = item.stages[stageIndex], question = stage.questions[questionIndex];
+  var key = storageKey(item, stage, questionIndex), feedback = document.getElementById('feedback');
+  if (question.multiAnswer && answerPartCount(question) > 1) { submitMultiAnswer(item, question, key); return; }
+  var input = document.getElementById('answerInput');
+  if (!input.value.trim()) {
+    feedback.className = 'feedback';
+    feedback.textContent = '先填写答案，再提交。';
+    input.focus();
+  } else if (matches(input.value, question.answers)) {
+    completeQuestion(item, question, key, '正确。');
+  } else {
+    noteMistake(key);
+    feedback.className = 'feedback try';
+    feedback.textContent = '还差一点。可以打开提示，再修改答案。';
+  }
+});
+
+function toast(message){var el=document.getElementById('toast');el.textContent=message;el.classList.add('show');window.clearTimeout(toast.timer);toast.timer=window.setTimeout(function(){el.classList.remove('show');},2300);}
+document.getElementById('showHint').addEventListener('click',function(){var q=currentLesson().stages[stageIndex].questions[questionIndex];var el=document.getElementById('hintLine');el.hidden=!el.hidden;this.setAttribute('aria-expanded',String(!el.hidden));});
+document.getElementById('showSolution').addEventListener('click',function(){var q=currentLesson().stages[stageIndex].questions[questionIndex];var el=document.getElementById('solutionBox');this.setAttribute('aria-expanded',String(el.classList.toggle('show')));setSolution(el,q.solution);});
+document.getElementById('nextQuestion').addEventListener('click',function(){var item=currentLesson(),stage=item.stages[stageIndex];if(questionIndex<stage.questions.length-1){questionIndex++;renderQuestion();return;}if(stageIndex<item.stages.length-1){stageIndex++;questionIndex=0;renderStageTabs();renderQuestion();scrollToStudySection('practiceStart');return;}var all=item.stages.every(function(s){return s.questions.every(function(_,i){return solved[storageKey(item,s,i)];});});if(all){done[item.code]=true;saveState();updateProgress();if(lessonIndex<lessons.length-1){loadLesson(lessonIndex+1);toast('小节通关，已进入下一关。');}else toast('全部关卡完成！');}else toast('本关还有题目没有答对，可以切换练习档继续。');});
+function loadLesson(index, stageNumber, questionNumber, destination) {
+  document.dispatchEvent(new Event('probability:lesson'));
+  lessonIndex = Math.max(0, Math.min(lessons.length - 1, index));
+  stageIndex = stageNumber || 0;
+  questionIndex = questionNumber || 0;
+  renderLesson();
+  scrollToStudySection(destination || 'lessonStart');
+}
 document.getElementById('prevLevel').addEventListener('click',function(){loadLesson(lessonIndex-1);});document.getElementById('nextLevel').addEventListener('click',function(){loadLesson(lessonIndex+1);});
 document.getElementById('replayDemo').addEventListener('click',function(){renderDemo(currentLesson());});
 var themeToggle=document.getElementById('themeToggle'),themeIcon=document.getElementById('themeIcon'),themeLabel=document.getElementById('themeLabel'),themeAnimationTimer;
@@ -688,8 +1304,10 @@ function syncThemeButton(){var dark=document.documentElement.dataset.theme==='da
 themeToggle.addEventListener('click',function(){var root=document.documentElement,dark=root.dataset.theme!=='dark';window.clearTimeout(themeAnimationTimer);root.classList.remove('theme-switching');void root.offsetWidth;root.classList.add('theme-switching');root.dataset.theme=dark?'dark':'light';try{localStorage.setItem('probabilityTheme',dark?'dark':'light');}catch(e){}syncThemeButton();themeAnimationTimer=window.setTimeout(function(){root.classList.remove('theme-switching');},540);});
 syncThemeButton();
 
-document.getElementById('resetProgress').addEventListener('click',function(){if(!window.confirm('要清空这台设备上保存的课程进度吗？'))return;done={};solved={};multiAnswerDrafts={};multiAnswerCorrect={};multiAnswerIncorrect={};saveState();try{localStorage.removeItem('probabilityLessonOneDone');}catch(e){}renderLesson();toast('本机进度已清空。');});
-renderNav();renderLesson();
+document.getElementById('resetProgress').addEventListener('click',function(){if(!window.confirm('要清空这台设备上保存的课程进度吗？'))return;done={};solved={};multiAnswerDrafts={};multiAnswerCorrect={};multiAnswerIncorrect={};studyState={cursor:{},saved:{},mistakes:{},partial:{}};saveStudyState();if(studyDialog.open)studyDialog.close();saveState();try{localStorage.removeItem('probabilityLessonOneDone');}catch(e){}renderLesson();toast('本机进度已清空。');});
+restoreStudyPosition();
+renderNav();
+renderLesson();
 })();
 </script>
 <script id="pg-upgrade-js">
@@ -700,9 +1318,9 @@ var bar=document.createElement('div');bar.id='pgScroll';document.body.appendChil
 addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight)*100+'%'},{passive:true});
 function burst(n,big){if(calm)return;var c=document.createElement('canvas'),x,p=[],i,t=0,k=['#ec8b53','#f1c84e','#1d6654','#a7c9dc','#7fb995'];c.className='pg-conf';c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);x=c.getContext('2d');for(i=0;i<n;i++)p.push({x:big?Math.random()*c.width:c.width/2,y:big?-10:c.height*.6,vx:(Math.random()-.5)*(big?5:11),vy:big?Math.random()*3+2:-Math.random()*10-4,s:Math.random()*6+4,r:Math.random()*6,c:k[i%5]});(function f(){x.clearRect(0,0,c.width,c.height);p.forEach(function(q){q.x+=q.vx;q.y+=q.vy;q.vy+=.22;q.r+=.2;x.save();x.translate(q.x,q.y);x.rotate(q.r);x.fillStyle=q.c;x.fillRect(-q.s/2,-q.s/2,q.s,q.s*.6);x.restore()});if(++t<(big?160:90))requestAnimationFrame(f);else c.remove()})()}
 var fb=$('#feedback'),lastFb='',tt=0,form=$('#answerForm'),toast=$('#toast');
-new MutationObserver(function(){var t=fb.textContent;if(!t)lastFb='';if(fb.classList.contains('good')&&/^(正确|各小题都正确)/.test(t)){if(t!==lastFb){lastFb=t;burst(46)}}else if(fb.classList.contains('try')){form.classList.remove('pg-shake');void form.offsetWidth;form.classList.add('pg-shake')}}).observe(fb,{childList:true,characterData:true,subtree:true,attributes:true,attributeFilter:['class']});
+new MutationObserver(function(){var t=fb.textContent;if(!t)lastFb='';if(fb.classList.contains('good')&&/^(正确|各小题都正确)/.test(t)){if(t!==lastFb){lastFb=t;burst(46)}}else if(!calm&&fb.classList.contains('try')&&!form.classList.contains('multi-answer')){form.classList.remove('pg-shake');void form.offsetWidth;form.classList.add('pg-shake')}}).observe(fb,{childList:true,characterData:true,subtree:true,attributes:true,attributeFilter:['class']});
 new MutationObserver(function(){if(/已通关！|全部关卡完成/.test(toast.textContent)&&Date.now()-tt>1500){tt=Date.now();burst(150,1)}}).observe(toast,{childList:true,characterData:true,subtree:true});
-addEventListener('keydown',function(e){if(e.altKey&&e.key==='ArrowRight')$('#nextLevel').click();else if(e.altKey&&e.key==='ArrowLeft')$('#prevLevel').click()});
+addEventListener('keydown',function(e){if(e.defaultPrevented||document.querySelector('dialog[open]')||e.target.matches?.('input, textarea, select'))return;if(e.altKey&&e.key==='ArrowRight')$('#nextLevel').click();else if(e.altKey&&e.key==='ArrowLeft')$('#prevLevel').click()});
 function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h)e.innerHTML=h;return e}
 function head(t,s){return'<div class="lab-head"><div><h3>'+t+'</h3><p>'+s+'</p></div><span class="demo-chip">互动实验</span></div>'}
 function btn(p,t,f,c){var b=el('button',c,t);b.type='button';b.onclick=f;p.appendChild(b);return b}
@@ -714,7 +1332,7 @@ function enter(k,t,f){fxOff();document.body.classList.add('fx-on');for(var j in 
 var grp=el('section','fx-group','<h2>趣味探索 · 不计入过关</h2>');
 [['dice','🎲 投骰子实验室',diceUI],['bin','📊 二项分布探索',binUI],['nor','🔔 正态分布探索',norUI]].forEach(function(d){fxb[d[0]]=btn(grp,d[1],function(){enter(d[0],d[1].slice(3),d[2])},'fx-btn')});
 $('#desktopNav').after(grp);
-['#desktopNav','#prevLevel','#nextLevel'].forEach(function(s){$(s).addEventListener('click',leave)});$('#mobileNav').addEventListener('change',leave);
+document.addEventListener('probability:lesson',leave);
 function diceUI(){
  var E=[{n:'抛硬币',t:'',m:2,L:function(i){return i?'反面':'正面'},T:function(){return .5},R:function(){var a=Math.random()<.5?0:1;return[a,[a]]}},
  {n:'掷一颗骰子',t:'点数 ',m:6,L:function(i){return i+1},T:function(){return 1/6},R:function(){var a=Math.random()*6|0;return[a,[a]]}},
